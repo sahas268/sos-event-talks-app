@@ -21,6 +21,86 @@
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Light mode variables override */
+:root[data-theme="light"] {
+    --bg-dark: #f8fafc;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --border-color: rgba(15, 23, 42, 0.08);
+    --border-hover: rgba(2, 132, 199, 0.35);
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    
+    --accent-blue: #0284c7;
+    --accent-teal: #059669;
+    --accent-orange: #ea580c;
+    --accent-purple: #7c3aed;
+    
+    --card-shadow: 0 10px 30px rgba(148, 163, 184, 0.12);
+    --glow-shadow: 0 0 20px rgba(2, 132, 199, 0.05);
+}
+
+:root[data-theme="light"] .glow-bg {
+    opacity: 0.04;
+}
+
+:root[data-theme="light"] #search-input {
+    background: rgba(255, 255, 255, 0.8);
+    color: #0f172a;
+}
+
+:root[data-theme="light"] #search-input:focus {
+    background: #ffffff;
+}
+
+:root[data-theme="light"] .card-body code {
+    background: rgba(15, 23, 42, 0.05);
+    color: #0f172a;
+    border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="light"] .modal-container {
+    background: #ffffff;
+    border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .modal-header {
+    border-bottom-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .modal-header h2 {
+    color: #0f172a;
+}
+
+:root[data-theme="light"] .modal-close-btn {
+    color: #0f172a;
+}
+
+:root[data-theme="light"] #tweet-textarea {
+    color: #0f172a;
+    border-bottom-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .tweet-preview-card {
+    border-color: #e2e8f0;
+    background: #f8fafc;
+}
+
+:root[data-theme="light"] .preview-domain {
+    background: #f1f5f9;
+    border-bottom-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .preview-title {
+    color: #0f172a;
+}
+
+:root[data-theme="light"] .composer-controls {
+    border-top-color: #e2e8f0;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -102,6 +182,111 @@ body {
     flex-wrap: wrap;
     gap: 20px;
 }
+
+/* Header Actions container */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Theme Toggler */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider-round {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid var(--border-color);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .3s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.slider-round:hover {
+    border-color: var(--border-hover);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="light"] .slider-round {
+    background-color: rgba(15, 23, 42, 0.03);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.slider-round svg {
+    width: 14px;
+    height: 14px;
+    transition: transform .3s ease, opacity .2s;
+    stroke-width: 2.5px;
+    z-index: 1;
+}
+
+.sun-icon {
+    color: #eab308;
+}
+
+.moon-icon {
+    color: #38bdf8;
+}
+
+.slider-round::before {
+    background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    bottom: 3px;
+    content: "";
+    height: 25px;
+    left: 3px;
+    position: absolute;
+    transition: .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 25px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Checked (Light Mode) state */
+input:checked + .slider-round::before {
+    transform: translateX(26px);
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    box-shadow: 0 2px 5px rgba(217, 119, 6, 0.25);
+}
+
+/* SVGs opacity depending on checkbox state */
+input:not(:checked) + .slider-round .moon-icon {
+    opacity: 0.9;
+}
+input:not(:checked) + .slider-round .sun-icon {
+    opacity: 0.25;
+}
+
+input:checked + .slider-round .sun-icon {
+    opacity: 0.9;
+}
+input:checked + .slider-round .moon-icon {
+    opacity: 0.25;
+}
+
 
 .header-brand {
     display: flex;
@@ -361,6 +546,15 @@ body {
     color: var(--text-primary);
 }
 
+.filter-actions-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
 .filter-chips {
     display: flex;
     gap: 10px;
@@ -610,12 +804,49 @@ body {
     margin-bottom: 4px;
 }
 
-/* Card Actions (Tweet Button) */
+/* Card Actions (Tweet + Copy Buttons) */
 .card-actions {
     display: flex;
     justify-content: flex-end;
     border-top: 1px solid var(--border-color);
     padding-top: 16px;
+    gap: 12px;
+}
+
+.btn-copy-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-copy-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+}
+
+.btn-copy-card svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+}
+
+:root[data-theme="light"] .btn-copy-card {
+    background: rgba(15, 23, 42, 0.02);
+}
+
+:root[data-theme="light"] .btn-copy-card:hover {
+    background: rgba(15, 23, 42, 0.05);
 }
 
 .btn-tweet-select {

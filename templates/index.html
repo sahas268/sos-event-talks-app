@@ -51,12 +51,37 @@
                 </div>
             </div>
             
-            <button id="refresh-btn" class="btn btn-primary" title="Refresh Release Notes">
-                <svg class="icon spinner-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.67-.67" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Refresh Feed</span>
-            </button>
+            <div class="header-actions">
+                <!-- Light/Dark Mode Switch -->
+                <div class="theme-switch-wrapper" title="Toggle Light/Dark Theme">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" />
+                        <div class="slider-round">
+                            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                    </label>
+                </div>
+                
+                <button id="refresh-btn" class="btn btn-primary" title="Refresh Release Notes">
+                    <svg class="icon spinner-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.67-.67" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Refresh Feed</span>
+                </button>
+            </div>
         </header>
 
         <!-- Stats Overview Cards Dashboard -->
@@ -94,11 +119,22 @@
                 <button id="clear-search" class="clear-btn" style="display: none;">&times;</button>
             </div>
             
-            <div class="filter-chips">
-                <button class="chip active" data-type="all">All Updates</button>
-                <button class="chip" data-type="Feature">Features</button>
-                <button class="chip" data-type="Issue">Issues</button>
-                <button class="chip" data-type="Deprecation">Deprecations</button>
+            <div class="filter-actions-wrapper">
+                <div class="filter-chips">
+                    <button class="chip active" data-type="all">All Updates</button>
+                    <button class="chip" data-type="Feature">Features</button>
+                    <button class="chip" data-type="Issue">Issues</button>
+                    <button class="chip" data-type="Deprecation">Deprecations</button>
+                </div>
+                
+                <button id="export-csv-btn" class="btn btn-secondary" title="Export Current List to CSV">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Export CSV</span>
+                </button>
             </div>
         </section>
 
